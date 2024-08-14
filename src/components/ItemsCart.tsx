@@ -1,5 +1,5 @@
 import { HeaderList } from './HeaderList';
-import { FlatList, VStack, useToast } from 'native-base';
+import { FlatList, Toast, ToastTitle, VStack, useToast } from '@gluestack-ui/themed';
 
 import { useCart } from '../hooks/useCart';
 
@@ -15,16 +15,26 @@ export function ItemsCart() {
       await removeProductCart(productId);
 
       toast.show({
-        title: 'Produto removido',
         placement: 'top',
-        bgColor: 'green.500'
+        render: () => {
+          return (
+            <Toast action="success" variant="solid" bgColor='$green500' mt={'$10'}>
+                <ToastTitle>Produto removido</ToastTitle>
+            </Toast>
+          )
+        }
       });
 
     } catch (error) {
       toast.show({
-        title: 'Não foi possível remover o produto',
         placement: 'top',
-        bgColor: 'reed.500'
+        render: () => {
+          return (
+            <Toast action="attention" variant="solid" bgColor='$red500' mt={'$10'}>
+                <ToastTitle>Não foi possível adicionar o produto no carrinho</ToastTitle>
+            </Toast>
+          )
+        }
       });
     }
   }
@@ -42,18 +52,18 @@ export function ItemsCart() {
             onRemove={() => handleItemRemove(item.id)}
           />
         )}
-        _contentContainerStyle={{ alignItems: 'center', paddingBottom: 20 }}
+        contentContainerStyle={{ alignItems: 'center', paddingBottom: 20 }}
         showsVerticalScrollIndicator={false}
-        px={8}
-        mt={2}
+        px={'$8'}
+        mt={'$2'}
       />
 
       {
         cart.length > 0 &&
         <Button
           title="Finalizar compra"
-          mx={8}
-          my={3}
+          mx={'$8'}
+          my={'$3'}
         />
       }
     </VStack>

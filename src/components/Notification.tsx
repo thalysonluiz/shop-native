@@ -1,4 +1,4 @@
-import { HStack, Text, IconButton, CloseIcon, Icon } from 'native-base';
+import { HStack, Text, IconButton, CloseIcon, Icon } from '@gluestack-ui/themed';
 import { Ionicons } from '@expo/vector-icons';
 
 type Props = {
@@ -9,18 +9,18 @@ type Props = {
 export function Notification({ title, onClose }: Props) {
   return (
     <HStack 
-      w="full" 
+      w="$full" 
       p={4} 
       pt={12}
       justifyContent="space-between" 
       alignItems="center" 
-      bgColor="gray.200"
+      bgColor="$gray200"
       position="absolute"
       top={0}
     >
         <Icon as={Ionicons} name="notifications-outline" size={5} color="black" mr={2}/>
 
-        <Text fontSize="md" color="black" flex={1}>
+        <Text fontSize="$md" color="black" flex={1}>
           {title}
         </Text>
 
@@ -28,7 +28,7 @@ export function Notification({ title, onClose }: Props) {
         variant="unstyled" 
         _focus={{ borderWidth: 0 }} 
         icon={<CloseIcon size="3" />} 
-        _icon={{ color: "coolGray.600"}} 
+        _icon={{ color: "cool$gray600"}} 
         color="black"
         onPress={onClose}
       />

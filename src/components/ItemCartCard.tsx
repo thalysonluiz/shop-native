@@ -1,6 +1,6 @@
 import { Feather } from '@expo/vector-icons';
 import { Platform, TouchableOpacity } from 'react-native';
-import { HStack, Image, Heading, Text, VStack, Icon } from 'native-base';
+import { HStack, Image, Heading, Text, VStack, Icon, TrashIcon } from '@gluestack-ui/themed';
 
 import { StorageCartProps } from '../storage/storageCart';
 
@@ -11,21 +11,21 @@ type Props = {
 
 export function ItemCartCard({ data, onRemove }: Props) {
   return (
-    <HStack w="full" h={20} bgColor="gray.500" rounded="md" alignItems="center" px={4} mb={2}>
-      <Image w={16} h={16} source={data.image} alt="Imagem do produto" resizeMode={Platform.OS === "android" ? "contain" : "cover"} />
+    <HStack w="$full" h={'$20'} bgColor="$gray500" rounded="$md" alignItems="center" px={'$4'} mb={'$2'}>
+      <Image w={'$16'} h={'$16'} source={data.image} alt="Imagem do produto" resizeMode={Platform.OS === "android" ? "contain" : "cover"} />
 
-      <VStack flex={1} ml={2}>
-        <Heading color="white" fontFamily="heading" fontSize="lg" mt={2}>
+      <VStack flex={1} ml={'$2'}>
+        <Heading color="$white" fontFamily="$heading" fontSize="$lg" mt={'$2'}>
           {data.name}
         </Heading>
 
-        <Text color="gray.200" fontSize="sm">
+        <Text color="$gray200" fontSize="$sm">
           {data.quantity} unidades
         </Text>
       </VStack>
 
       <TouchableOpacity onPress={onRemove}>
-        <Icon as={Feather} name="trash" size={6} color="red.500" />
+        <Icon as={TrashIcon} size={'md'} color="$red500" />
       </TouchableOpacity>
     </HStack>
   );

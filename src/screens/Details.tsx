@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 import { useEffect, useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { Heading, Image, ScrollView, Text, VStack, useToast, HStack } from 'native-base';
+import { Heading, Image, ScrollView, Text, VStack, useToast, HStack, Toast, ToastTitle, ToastDescription } from '@gluestack-ui/themed';
 
 import { useCart } from '../hooks/useCart';
 
@@ -40,17 +40,27 @@ export function Details() {
       });
 
       toast.show({
-        title: 'Produto adicionado no carrinho',
         placement: 'top',
-        bgColor: 'green.500'
+        render: () => {
+          return (
+            <Toast action="success" variant="solid" bgColor='$green500' mt={'$10'}>
+                <ToastTitle color='$white' w={'$full'}>Produto adicionado no carrinho</ToastTitle>
+            </Toast>
+          )
+        }
       });
 
       navigate('cart');
     } catch (error) {
       toast.show({
-        title: 'Não foi possível adicionar o produto no carrinho',
         placement: 'top',
-        bgColor: 'reed.500'
+        render: () => {
+          return (
+            <Toast action="attention" variant="solid" bgColor='$red500' mt={'$10'}>
+                <ToastTitle>Não foi possível adicionar o produto no carrinho</ToastTitle>
+            </Toast>
+          )
+        }
       });
     }
   }
@@ -65,30 +75,30 @@ export function Details() {
       <ScreenHeader title="Detalhes do Produto" />
 
       <ScrollView>
-        <Image
+      {product.image ? <Image
           key={String(new Date().getTime())}
           source={product.image}
-          w={56}
-          h={56}
+          w={'$56'}
+          h={'$56'}
           resizeMode={Platform.OS === "android" ? "contain" : "cover"}
           alt="Imagem do produto"
           alignSelf="center"
-        />
+        /> : <></>}
 
-        <VStack p={6}>
-          <HStack w="full" justifyContent="space-between" alignItems="center">
+        <VStack p={'$6'}>
+          <HStack w="$full" justifyContent="space-between" alignItems="center">
             <VStack>
-              <Heading color="white" fontFamily="heading" fontSize="xl">
+              <Heading color="white" fontFamily="$heading" fontSize="$xl">
                 {product.name}
               </Heading>
 
-              <Text color="gray.200" fontSize="md" fontFamily="heading">
+              <Text color="$gray200" fontSize="$md" fontFamily="$heading">
                 R$ {product.price}
               </Text>
             </VStack>
 
             <VStack alignItems="flex-end">
-              <Text color="gray.200" fontSize="sm" textAlign="justify" pt={2}>
+              <Text color="$gray200" fontSize="$sm" textAlign="justify" pt={'$2'}>
                 Quantidade
               </Text>
 
@@ -97,12 +107,12 @@ export function Details() {
                 keyboardType="numeric"
                 textAlign="center"
                 value={quantity}
-                w={14}
+                w={'$14'}
               />
             </VStack>
           </HStack>
 
-          <Text color="gray.200" fontSize="md" textAlign="justify" pt={2}>
+          <Text color="$gray200" fontSize="$md" textAlign="justify" pt={'$2'}>
             {product.description}
           </Text>
 

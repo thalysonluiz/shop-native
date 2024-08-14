@@ -1,4 +1,4 @@
-import { FlatList } from 'native-base';
+import { FlatList } from '@gluestack-ui/themed';
 
 import { Brand } from './Brand';
 import { BRANDS } from '../data/brands';
@@ -23,10 +23,10 @@ export function Brands({ onSelect, selected }: Props) {
       )}
       horizontal
       showsHorizontalScrollIndicator={false}
-      _contentContainerStyle={{ px: 8 }}
-      mt={10}
-      maxH={10}
-      minH={10}
+      contentContainerStyle={{ paddingHorizontal: 8 }}
+      mt={'$10'}
+      maxHeight={'$10'}
+      minHeight={'$10'}
     />
   );
 }

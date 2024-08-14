@@ -1,4 +1,4 @@
-import { FlatList, Heading, VStack } from 'native-base';
+import { FlatList, Heading, VStack } from '@gluestack-ui/themed';
 
 import { Size } from './Size';
 
@@ -10,8 +10,8 @@ type Props = {
 export function Sizes({ onSelect, selected }: Props) {
 
   return (
-    <VStack my={8}>
-      <Heading fontFamily="heading" fontSize="md" color="gray.200" mb={3}>
+    <VStack my={'$8'}>
+      <Heading fontFamily="$heading" fontSize="$md" color="$gray200" mb={'$3'}>
         Tamanhos
       </Heading>
 
@@ -27,9 +27,9 @@ export function Sizes({ onSelect, selected }: Props) {
         )}
         horizontal
         showsHorizontalScrollIndicator={false}
-        _contentContainerStyle={{ pr: 8 }}
-        maxH={10}
-        minH={10}
+        contentContainerStyle={{ paddingRight: 8 }}
+        maxH={'$10'}
+        minH={'$10'}
       />
     </VStack>
   );

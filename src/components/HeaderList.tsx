@@ -1,4 +1,4 @@
-import { Heading, HStack, Text } from 'native-base';
+import { Heading, HStack, Text } from '@gluestack-ui/themed';
 
 type Props = {
   title: string;
@@ -7,12 +7,12 @@ type Props = {
 
 export function HeaderList({ title, counter }: Props) {
   return (
-    <HStack w="full" justifyContent="space-between" alignItems="center" px={8} mt={6}>
-      <Heading fontFamily="heading" color="gray.200" fontSize="md">
+    <HStack w="$full" justifyContent="space-between" alignItems="center" px={'$8'} mt={'$6'}>
+      <Heading fontFamily="$heading" color="$gray200" fontSize="$md">
         {title}
       </Heading>
 
-      <Text color="gray.200" fontSize="sm">
+      <Text color="$gray200" fontSize="$sm">
         {counter}
       </Text>
     </HStack>

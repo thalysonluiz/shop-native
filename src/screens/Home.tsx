@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { VStack } from 'native-base';
+import { VStack } from '@gluestack-ui/themed';
 
 import { PRODUCTS } from '../data/products';
 

@@ -1,27 +1,26 @@
+import { GluestackUIProvider} from '@gluestack-ui/themed';
 import { StatusBar } from 'react-native';
-import { NativeBaseProvider } from 'native-base';
-import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
+import { 
+  useFonts, 
+  Roboto_400Regular,
+  Roboto_700Bold
+} from '@expo-google-fonts/roboto';
 
-import { Routes } from './src/routes';
+import { config } from './src/theme';
+import { Loading } from '@components/Loading';
+import { CartContextProvider } from '@contexts/CartContext';
+import { Routes } from '@routes/index';
 
-import { THEME } from './src/theme';
-import { Loading } from './src/components/Loading';
-
-import { CartContextProvider } from './src/contexts/CartContext';
 
 export default function App() {
-  const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
+  const [fontsLoaded] = useFonts({Roboto_400Regular, Roboto_700Bold})
 
   return (
-    <NativeBaseProvider theme={THEME}>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
+    <GluestackUIProvider config={config}>
+      <StatusBar backgroundColor='transparent' barStyle='light-content' translucent />
       <CartContextProvider>
-        {fontsLoaded ? <Routes /> : <Loading />}
+        {!fontsLoaded ? <Loading /> : <Routes />}
       </CartContextProvider>
-    </NativeBaseProvider>
+    </GluestackUIProvider>
   );
 }

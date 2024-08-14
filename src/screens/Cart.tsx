@@ -1,4 +1,4 @@
-import { VStack } from 'native-base';
+import { VStack } from '@gluestack-ui/themed';
 
 import { ItemsCart } from '../components/ItemsCart';
 import { ScreenHeader } from '../components/ScreenHeader';

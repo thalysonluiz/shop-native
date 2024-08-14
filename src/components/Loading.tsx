@@ -1,9 +1,9 @@
-import { Spinner, Center } from 'native-base';
+import { Spinner, Center } from '@gluestack-ui/themed';
 
 export function Loading() {
   return (
-    <Center flex={1} bg="gray.700">
-      <Spinner color="green.500" />
+    <Center flex={1} bg="$gray700">
+      <Spinner color="$green500" />
     </Center>
   );
 }
